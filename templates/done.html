@@ -12,28 +12,20 @@
 
 <body>
     <div class="ui secondary  menu">
-        <a href="/" class="active item">
+        <a href="/" class="item">
             Home
         </a>
-        <a href="/done" class="item">
+        <a href="/done" class="active item">
             Done list
         </a>
     </div>
 
     <div style="margin-top: 50px;" class="ui container">
-        <h1 class="ui center aligned header">To Do App</h1>
-
-        <form class="ui form" action="/add" method="post">
-            <div class="field">
-                <label>Todo Title</label>
-                <input type="text" name="title" placeholder="Enter Todo..."><br>
-            </div>
-            <button class="ui blue button" type="submit">Add</button>
-        </form>
+        <h1 class="ui center aligned header">To Do App - Done History</h1>
 
         <hr>
 
-        {% for todo in todo_list %}
+        {% for todo in done_list %}
         <div class="ui segment">
             <p class="ui big header">{{todo.id }} | {{ todo.title }}</p>
 
@@ -43,7 +35,7 @@
             <span class="ui green label">Completed</span>
             {% endif %}
 
-            <a class="ui blue button" href="/update/{{ todo.id }}">Update</a>
+            <a class="ui blue button" href="/undo/{{ todo.id }}">Undo</a>
             <a class="ui red button" href="/delete/{{ todo.id }}">Delete</a>
         </div>
         {% endfor %}

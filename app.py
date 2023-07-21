@@ -73,6 +73,13 @@ def delete(todo_id):
     db.session.commit()
     return redirect(url_for("home"))
 
+@app.route("/deleteDone/<int:todo_id>")
+def deleteDone(todo_id):
+    done = Done.query.filter_by(id=todo_id).first()
+    db.session.delete(done)
+    db.session.commit()
+    return redirect(url_for("done"))
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
